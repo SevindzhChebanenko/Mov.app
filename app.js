@@ -1,6 +1,17 @@
 'use strict'
 
-const numberOfFilms = +prompt('Сколько фильмов вы посмотрели?', '')
+let numberOfFilms
+
+
+function start() {
+    numberOfFilms = +prompt('Сколько фильмов вы посмотрели?', '')
+
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('Сколько фильмов вы посмотрели?', '')
+    }
+}
+
+start()
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -35,15 +46,24 @@ const a = prompt('Один из последних просмотренных ф
         }
  */
 
-    let i = 0
-    do {
-        const a = prompt('Один из последних просмотренных фильмов?',''),
-            b = prompt('На сколько оцените его?', '');
-            i++;
-            let result = (a != null && b != null && a != '' && b!= '' && a.length < 50) ? personalMovieDB.movies[a] = b && console.log('done') : console.log('error') && i--
-                console.log(result)
-    } while (i < 2);
 
+
+    function rememberMyFilms() {
+        let i = 0
+        do {
+            const a = prompt('Один из последних просмотренных фильмов?',''),
+                b = prompt('На сколько оцените его?', '');
+                i++;
+                let result = (a != null && b != null && a != '' && b!= '' && a.length < 50) ? personalMovieDB.movies[a] = b && console.log('done') : console.log('error') && i--
+                    console.log(result)
+        } while (i < 2);
+    }
+
+    rememberMyFilms()
+
+
+
+function detectPersonalLevel() {
     if (personalMovieDB.count < 10 ) {
         console.log('Просмотрено довольно мало фильмов')
     } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30 ) {
@@ -53,5 +73,8 @@ const a = prompt('Один из последних просмотренных ф
     } else {
         console.log('Произошла ошибка')
     }
+}
 
+    detectPersonalLevel()
+    
     console.log(personalMovieDB)
