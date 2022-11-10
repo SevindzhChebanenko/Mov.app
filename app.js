@@ -51,7 +51,7 @@ const a = prompt('Один из последних просмотренных ф
     function rememberMyFilms() {
         let i = 0
         do {
-            const a = prompt('Один из последних просмотренных фильмов?',''),
+            const a = prompt('Один из последних просмотренных фильмов?','').trim(),
                 b = prompt('На сколько оцените его?', '');
                 i++;
                 let result = (a != null && b != null && a != '' && b!= '' && a.length < 50) ? personalMovieDB.movies[a] = b && console.log('done') : console.log('error') && i--
